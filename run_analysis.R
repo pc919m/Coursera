@@ -46,10 +46,7 @@ Merged_Data <- cbind(Subject, Y, X)
 Tidy_Data <- Merged_Data %>% select(subject, code, contains("mean"), contains("std"))
 
 #3. Uses descriptive activity names to name the activities in the data set
-#Tidy_Data$code <- activities[Tidy_Data$code, 2]
-
-activityLabels <- read.table(file.path(Tidy_Data, "activity_labels.txt"),header = FALSE)
-head(Tidy_Data$activity,30)
+Tidy_Data$code <- activities[Tidy_Data$code, 2]
 
 #4. Appropriately labels the data set with descriptive variable names.
 names(Tidy_Data)[2] = "activity"
@@ -75,3 +72,4 @@ Tidy_Data_Final <- Tidy_Data %>%
 write.table(Tidy_Data_Final, "Tidy_Data_Final.txt", row.name=FALSE)
 
 str(Tidy_Data_Final)
+
